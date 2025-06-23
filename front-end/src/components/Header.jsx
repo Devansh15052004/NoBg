@@ -15,12 +15,14 @@ const Header = () => {
                 <h1 className="text-4xl md:text-5xl font-bold text-gray-900mb=6 leading-tight">
                     The fastest <span className="text-blue-500">background eraser.</span>
                 </h1>
+                <br />
                 <p className="text-gray-600 mb-8 text-lg leading-relaxed">
                     Transform your photos with our background remover app! Highlight your 
                     subject and create a transparent background, so you can place it in a 
                     variety of new design and destinations. Try it now and immerse your
                     subject in a completely different environment !!! 
                 </p>
+                
                 <div>
                     <input type="file" accept="image/*" id="upload1" hidden  />
                     <label htmlFor="upload1" className="bg-black text-white front-medium px-8 py-4 rounded-full hover:opacity-90 transition-transform hover:scale-105 text-lg">
