@@ -1,7 +1,7 @@
 // import React from 'react'
 
-import { Plane } from "lucide-react";
-import { assets, plans } from "../Assest/assests";
+// import { Plane } from "lucide-react";
+import {  plans } from "../Assest/assests";
 const Pricing = () => {
   return (
     <div>

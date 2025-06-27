@@ -1,5 +1,6 @@
 // import React from 'react'
 
+import toast from "react-hot-toast";
 import { assets } from "../Assest/assests";
 
 const Header = () => {
@@ -28,6 +29,7 @@ const Header = () => {
                     <label htmlFor="upload1" className="bg-black text-white front-medium px-8 py-4 rounded-full hover:opacity-90 transition-transform hover:scale-105 text-lg">
                         Upload your image
                     </label>
+                    {/* <button onClick={()=>toast.success("working")}>TEST TOAST</button> */}
                 </div>
             </div>
         </div>
