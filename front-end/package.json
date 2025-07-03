@@ -14,7 +14,7 @@
     "@mantine/core": "^8.0.2",
     "@mantine/hooks": "^8.0.2",
     "@tabler/icons-react": "^3.33.0",
-    "axios": "^1.7.6",
+    "axios": "^1.10.0",
     "lucide-react": "^0.517.0",
     "react": "^18.3.1",
     "react-chartjs-2": "^5.2.0",

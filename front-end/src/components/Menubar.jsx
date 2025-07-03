@@ -2,7 +2,6 @@ import { useState } from "react";
 import { assets } from "../Assest/assests.js";
 import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
-// import {ass}
 import { SignedOut,SignedIn,UserButton, useClerk, useUser } from "@clerk/clerk-react";
 const Menubar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -46,6 +45,7 @@ const Menubar = () => {
                 Credits:0
               </p>
             </button>
+            
             <p className="text-gray-600 max-sm:hidden">
               Hi, {user?.fullName}
             </p>
@@ -76,6 +76,7 @@ const Menubar = () => {
                 Credits:0
               </p>
             </button>
+            
             <p className="text-gray-600 max-sm:hidden">
               Hi, {user?.fullName}
             </p>
