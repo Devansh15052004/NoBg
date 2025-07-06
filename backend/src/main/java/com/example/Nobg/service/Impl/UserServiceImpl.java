@@ -5,7 +5,10 @@ import com.example.Nobg.entity.UserEntity;
 import com.example.Nobg.repository.UserRepository;
 import com.example.Nobg.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.service.UnknownServiceException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -17,6 +20,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
+    @Transactional
     public UserDTO saveUser(UserDTO userDTO) {
         Optional<UserEntity> optionalUser=userRepository.findByClerkId(userDTO.getClerkId());
         if(optionalUser.isPresent()){
@@ -35,6 +39,21 @@ public class UserServiceImpl implements UserService {
         userRepository.save(newUser);
         return mapToDTO(newUser);
     }
+
+    @Override
+    public UserDTO getUserByClerkId(String clerkId) {
+        UserEntity user=userRepository.findByClerkId(clerkId)
+                .orElseThrow(()->new UsernameNotFoundException("User not found"));
+        return mapToDTO(user);
+    }
+
+    @Override
+    public void deleteUserByClerkId(String clerkId) {
+        UserEntity user=userRepository.findByClerkId(clerkId)
+                .orElseThrow(()->new UsernameNotFoundException("User not found"));
+        userRepository.delete(user);
+    }
+
     private UserDTO mapToDTO(UserEntity newUser){
        return UserDTO.builder()
                 .clerkId(newUser.getClerkId())
