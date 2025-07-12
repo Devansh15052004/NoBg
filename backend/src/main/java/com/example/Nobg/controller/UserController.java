@@ -3,16 +3,17 @@ package com.example.Nobg.controller;
 import com.example.Nobg.dto.UserDTO;
 import com.example.Nobg.response.RemoveBGresponse;
 import com.example.Nobg.service.UserService;
+import lombok.Generated;
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.http.HttpResponse;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/users")
@@ -45,6 +46,38 @@ public class UserController {
                     .success(false)
                     .data(e.getMessage())
                     .statusCode(String.valueOf(HttpStatus.INTERNAL_SERVER_ERROR))
+                    .build();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
+    @GetMapping("/credits")
+    public ResponseEntity<?> getUserCredits(Authentication authentication){
+        RemoveBGresponse response=null;
+        try {
+            if(authentication.getName().isEmpty()|| authentication.getName()==null){
+                response=RemoveBGresponse.builder()
+                        .statusCode(String.valueOf(HttpStatus.FORBIDDEN))
+                        .data("User does not have permission/access to this resourse")
+                        .success(false)
+                        .build();
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(response);
+            }
+            String clerkId = authentication.getName();
+            UserDTO  existingUser = userService.getUserByClerkId(clerkId);
+            Map<String,Integer>map=new HashMap<>();
+            map.put("credits",existingUser.getCredits());
+            response = RemoveBGresponse.builder()
+                            .statusCode(String.valueOf(HttpStatus.OK))
+                            .data(map)
+                            .success(true)
+                            .build();
+            return ResponseEntity.status(HttpStatus.OK).body(response);
+
+        }catch (Exception e){
+            response = RemoveBGresponse.builder()
+                    .statusCode(String.valueOf(HttpStatus.INTERNAL_SERVER_ERROR))
+                    .data("Something went wrong")
+                    .success(false)
                     .build();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }

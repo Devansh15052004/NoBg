@@ -29,13 +29,14 @@ public class UserServiceImpl implements UserService {
             existingUser.setFirstName(userDTO.getFirstName());
             existingUser.setLastName(userDTO.getLastName());
             existingUser.setPhotoUrl(userDTO.getPhotoUrl());
-            if(userDTO.getCredits()==null){
+            if(userDTO.getCredits()!=null){
                 existingUser.setCredits(userDTO.getCredits());
             }
-            userRepository.save(existingUser);
+            existingUser=userRepository.save(existingUser);
            return mapToDTO(existingUser);
         }
         UserEntity newUser=mapToEntity(userDTO);
+        newUser.setCredits(5);
         userRepository.save(newUser);
         return mapToDTO(newUser);
     }

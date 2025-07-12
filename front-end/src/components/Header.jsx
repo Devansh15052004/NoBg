@@ -4,6 +4,10 @@ import toast from "react-hot-toast";
 import { assets } from "../Assest/assests";
 
 const Header = () => {
+    const hangle=async()=>{
+        const token = await window.Clerk.session.getToken();
+        console.log(token);
+    }
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
             <div className="order-2 md:order-1 flex justify-center">
@@ -29,7 +33,7 @@ const Header = () => {
                     <label htmlFor="upload1" className="bg-black text-white front-medium px-8 py-4 rounded-full hover:opacity-90 transition-transform hover:scale-105 text-lg">
                         Upload your image
                     </label>
-                    {/* <button onClick={()=>toast.success("working")}>TEST TOAST</button> */}
+                    <button onClick={hangle}>TEST TOAST</button>
                 </div>
             </div>
         </div>
