@@ -1,53 +1,29 @@
-# ---- Java / Spring Boot ----
-/target/
-!.mvn/wrapper/maven-wrapper.jar
-**/logs/
+# Common
+.DS_Store
 *.log
 *.class
 *.jar
-*.war
-*.iml
-*.h2.db
-*.mv.db
-hs_err_pid*
-*.db
-.DS_Store
 
-# Eclipse / IntelliJ IDEA
-.project
-.classpath
-.settings/
+# Java
+target/
+*.iml
+*.classpath
+*.project
 .idea/
-*.iws
-*.ipr
-*.iml
+*.war
 
-# Maven
-.mvn/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-pom.xml.next
-release.properties
-dependency-reduced-pom.xml
+# Node/React
+frontend/node_modules/
+frontend/dist/
+frontend/.env
 
-# Gradle
-.gradle/
+# Build files
 build/
-!gradle/wrapper/gradle-wrapper.jar
+.env
+*.env.local
+*.env.development
+*.env.production
 
-# VS Code
+# VSCode & IntelliJ
 .vscode/
-
-# ---- Node / React ----
-/frontend/node_modules/
-/frontend/.env
-/frontend/.next/
-/frontend/build/
-/frontend/dist/
-/frontend/.cache
-/frontend/yarn.lock
-/frontend/package-lock.json
-
-# React test coverage
-/frontend/coverage/
+*.swp
