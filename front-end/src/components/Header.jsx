@@ -1,9 +1,11 @@
 // import React from 'react'
 
-import toast from "react-hot-toast";
 import { assets } from "../Assest/assests";
+import { AppContext } from "../context/AppContext";
+import { useContext } from "react";
 
 const Header = () => {
+    const {removeBg}=useContext(AppContext);
     const hangle=async()=>{
         const token = await window.Clerk.session.getToken();
         console.log(token);
@@ -29,7 +31,7 @@ const Header = () => {
                 </p>
                 
                 <div>
-                    <input type="file" accept="image/*" id="upload1" hidden  />
+                    <input type="file" accept="image/*" id="upload1" hidden onChange={(e)=>removeBg(e.target.files[0])} />
                     <label htmlFor="upload1" className="bg-black text-white front-medium px-8 py-4 rounded-full hover:opacity-90 transition-transform hover:scale-105 text-lg">
                         Upload your image
                     </label>

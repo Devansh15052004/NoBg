@@ -3,7 +3,6 @@ import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import axios from "axios";
 import toast from "react-hot-toast";
-
 const UserSyncHandler = () => {
   const { isLoaded, isSignedIn, getToken } = useAuth();
   const { user } = useUser();
